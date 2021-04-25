@@ -1,0 +1,5 @@
+^X^L = complete whole line
+^X^N == ^N = complete keyword from current file
+^X^I = complete keyword from current and included files
+^X^] = complete from tag file
+^X^F = complete file name

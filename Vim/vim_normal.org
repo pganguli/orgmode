@@ -1,0 +1,118 @@
+h = 1 char left
+H = top of screen
+j = 1 char down
+k = 1 char up
+l = 1 char right
+L = bottom of screen
+
+w = 1 word
+W = 1 WORD
+b = beginning of word
+B = beginning of WORD
+e = end of word
+E = end of WORD
+t{char} = till before /char/
+T{char} = till before /char/, backwards
+f{char} = fill upto /char/
+F{char} = fill upto /char/, backwards
+
+x = delete 1 char and place in register /"/
+d = delete and place in register /"/
+y = yank and place in register /"/
+c = delete and enter insert mode
+s == cl
+r{char} = delete 1 char and insert /char/
+
+i = insert before cursor
+I = insert at beginning of line
+a = insert after cursor
+A = insert at end of line
+o = open new line below
+O = open new line above
+p = paste below
+P = paste above
+
+"{char} = use register /char/
+"{CHAR} = append to register /CHAR/
+"" = cut/copyied text
+"* = primary selection
+"+ = secondary selection
+
+q{char} = record macro in register /char/
+@{char} = replay macro from register /char/
+
+m{char} = set local mark in register /char/
+m{CHAR} = set global mark in register /CHAR/
+' = jump to marked line
+` = jump to marked character
+
+/ = search. Use \<word\> to match whole `word`
+* = search for word under cursor
+<start>;<end>s/<find>/<replace>/<flags> = search from <start> through <end> for <find>
+                                          and replace it with <replace>; all occurrences
+                                          if <flags> contains g; ignore case if <flags> contains i;
+                                          strict case if <flags> contains I.
+= = indent
+
+~ = toggle case
+
+g
+gf = go to file name under cursor
+gg = go to top of file
+G = go to bottom of file
+
+^] = follow tag under cursor
+# set tags=tags;
+
+_ 0 $ % i a
+
+zo = open fold
+zc = close fold
+# :set foldmethod
+
+:e == :edit
+:w == :write
+:q == :quit
+
+u = undo last change
+^R = redo last undone change
+:undol == :undolist = list leafs in undo tree
+
+:buffers == :files == :ls
+:bf == :bfirst
+:bl == :blast
+:bn == :bnext
+:bp == :bprevious
+:b{num} == :b {partial file name}
+:bd == :bdelete
+
+:tabnew
+:tabclose
+gt == :tabnext
+gT == :tabprevious
+
+^Ws == :sp == :split
+^Wv == :vs == :vsplit
+^Wn == :new
+^Wn == :vne == :vnew
+^W{h,j,k,l} = Switch window panes
+^W{H,J,K,L} = Move window panes
+
+# :set wildmenu
+:Ex == :Explore = netrw
+:Sex == netrw in split
+:Vex = netrw in vsplit
+:Lex == netrw in left vsplit
+
+:ter == :terminal
+:vert ter == :vertical terminal
+
+:vim == :vimgrep
+:vimdiff
+:sort == :%!sort
+
+R = Replace mode
+
+v = Visual char mode
+V = Visual line mode
+^V = Visual block mode
