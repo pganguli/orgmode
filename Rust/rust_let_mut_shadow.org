@@ -1,0 +1,15 @@
+#+BEGIN_SRC
+
+let a; // `a` defined, type inferred as u32
+a = 1; // `a` initialized
+
+let x = 5; // `x` is immutable
+let y: i32 = 5 // type annotate `y` as i32
+let mut z = 7; // `z` is mutable
+
+let letters = "abcd"; // letters: String
+let letters = letters.space(); // shadow `letters` as usize, still immutable
+
+const SPEED_OF_LIGHT: i32 = 299792458; // immutable and immovable constant
+
+#+END_SRC

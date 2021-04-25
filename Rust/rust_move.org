@@ -1,0 +1,17 @@
+#+BEGIN_SRC
+
+let i1 = 5;
+let i2 = i1; // i1 deep copied into i2
+
+let s1 = String::from("hello");
+let s2 = s1.clone(); // s1 deep copied into s2
+let s3 = s1; // s1 moved into s3
+
+let s4 = String::from("hello");
+let s5 = own(s4); // s4 moved as argument to own()
+
+fn own(s6: String) -> String {
+    s6 // s6 moved into s5
+}
+
+#+END_SRC

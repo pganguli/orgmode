@@ -1,0 +1,33 @@
+* Mount qcow2 disk image
+
+1. Enable NBD on the Host
+
+#+BEGIN_SRC
+modprobe nbd max_part=8
+#+END_SRC
+
+2. Connect the QCOW2 as network block device
+
+#+BEGIN_SRC
+qemu-nbd --connect=/dev/nbd0 /var/lib/vz/images/100/vm-100-disk-1.qcow2
+#+END_SRC
+
+3. Find The Virtual Machine Partitions
+
+#+BEGIN_SRC
+fdisk /dev/nbd0 -l
+#+END_SRC
+
+4. Mount the partition from the VM
+
+#+BEGIN_SRC
+mount /dev/nbd0p1 /mnt/somepoint/
+#+END_SRC
+
+5. After you done, unmount and disconnect
+
+#+BEGIN_SRC
+umount /mnt/somepoint/
+qemu-nbd --disconnect /dev/nbd0
+rmmod nbd
+#+END_SRC

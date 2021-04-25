@@ -1,0 +1,124 @@
+You can declare methods on your own types:
+
+#+BEGIN_SRC
+struct Number {
+    odd: bool,
+    value: i32,
+}
+
+impl Number {
+    fn is_strictly_positive(self) -> bool {
+        self.value > 0
+    }
+}
+#+END_SRC
+
+Traits are something multiple types can have in common:
+
+#+BEGIN_SRC
+trait Signed {
+    fn is_strictly_negative(self) -> bool;
+}
+#+END_SRC
+
+You can implement:
+
+    one of your traits on anyone's type
+    anyone's trait on one of your types
+    but not a foreign trait on a foreign type
+
+These are called the "orphan rules".
+
+Here's an implementation of our trait on our type:
+
+#+BEGIN_SRC
+impl Signed for Number {
+    fn is_strictly_negative(self) -> bool {
+        self.value < 0
+    }
+}
+
+fn main() {
+    let n = Number { odd: false, value: -44 };
+    println!("{}", n.is_strictly_negative()); // prints "true"
+}
+#+END_SRC
+
+Our trait on a foreign type (a primitive type, even):
+
+#+BEGIN_SRC
+impl Signed for i32 {
+    fn is_strictly_negative(self) -> bool {
+        self < 0
+    }
+}
+
+fn main() {
+    let n: i32 = -44;
+    println!("{}", n.is_strictly_negative()); // prints "true"
+}
+#+END_SRC
+
+A foreign trait on our type:
+
+#+BEGIN_SRC
+// the `Neg` trait is used to overload `-`, the
+// unary minus operator.
+impl std::ops::Neg for Number {
+    type Output = Number;
+
+    fn neg(self) -> Number {
+        Number {
+            value: -self.value,
+            odd: self.odd,
+        }
+    }
+}
+
+fn main() {
+    let n = Number { odd: true, value: 987 };
+    let m = -n; // this is only possible because we implemented `Neg`
+    println!("{}", m.value); // prints "-987"
+}
+#+END_SRC
+
+An /impl/ block is always for a type, so, inside that block, /Self/ means that type:
+
+#+BEGIN_SRC
+impl std::ops::Neg for Number {
+    type Output = Self;
+
+    fn neg(self) -> Self {
+        Self {
+            value: -self.value,
+            odd: self.odd,
+        }
+    }
+}
+#+END_SRC
+
+Some traits are markers - they don't say that a type implements some methods, they say that certain things can be done with a type.
+
+For example, /i32/ implements trait /Copy/ (in short, /i32/ is /Copy/), so this works:
+
+#+BEGIN_SRC
+fn main() {
+    let a: i32 = 15;
+    let b = a; // `a` is copied
+    let c = a; // `a` is copied again
+}
+#+END_SRC
+
+And this also works:
+
+#+BEGIN_SRC
+fn print_i32(x: i32) {
+    println!("x = {}", x);
+}
+
+fn main() {
+    let a: i32 = 15;
+    print_i32(a); // `a` is copied
+    print_i32(a); // `a` is copied again
+}
+#+END_SRC

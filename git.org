@@ -1,0 +1,37 @@
+#+BEGIN_SRC
+git init
+git add .
+vim <file_to_edit>
+git diff
+git add <edited_file>
+git status
+git diff --staged
+git commit
+git rm <file_to_rm>
+git log
+git log --oneline
+git log -p
+git log -S <text>
+git blame <file>
+git remote add <nick> <url>
+git remote
+git remote show <nick>
+git push <branch> <nick>
+
+git clone
+git pull == git fetch && git merge
+git tag
+git tag <tag_name> // lightweight tags store only commit name
+git tag -a <tag_name> // annotated tags store all info
+git show <tag_name>
+git push <nick> --tags // tags are not pushed by default
+git push <nick> --delete <tag_name>
+
+git checkout <branch_name>
+git checkout -b <new_branch> <branch_name> ==
+    git branch <new_branch> && git checkout <branch_name>
+git branch -d <branch_name>
+git merge <branch_name>
+git status
+git mergetool
+#+END_SRC

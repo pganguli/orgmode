@@ -1,0 +1,30 @@
+/Italics/
+_Underline_
+* Heading
+** Sub-Heading
+*Bold*
+=Verbatim=
++Strikethrough+
+1. List Item 1
+    - Sub Item
+    - Sub Item
+2. List Item 2
+    - [ ] not started
+    - [-] in progress
+    - [X] completed
+
+[[example.org][Link]]
+
+# Comment
+#+BEGIN_COMMENT
+Comment Line 1
+Comment Line 2
+#+END_COMMENT
+
+~Code~
+#+BEGIN_SRC
+int main() {
+    printf("Hello, world!");
+    return EXIT_SUCCESS;
+}
+#+END_SRC
